@@ -1,3 +1,4 @@
+// deposit calculation part:
 document.getElementById("deposit-btn").addEventListener("click",function(){
 
     // step-1 get the input amount
@@ -33,4 +34,39 @@ document.getElementById("deposit-btn").addEventListener("click",function(){
     // set totall updated balance
     totalBalanceOldString.innerText = totallBalance;
     
+});
+
+// withdraw amount:
+document.getElementById("Withdraw-btn").addEventListener("click", function(){
+
+   // taking the withdraw input amount:
+   let withdrawAmountStrings = document.getElementById("withdraw-field");
+   // convert the amount   
+   let withdrawAmount = parseFloat(withdrawAmountStrings.value);
+
+   // taking the withdraw display amount:
+   let displayWithdrawAmountString = document.getElementById("display-withdraw");
+   // convert the amount 
+   let displaywithdrawAmount = parseFloat(displayWithdrawAmountString.innerText);
+
+   // set the display withdraw amount:
+   let totallWithdrawAmount = withdrawAmount + displaywithdrawAmount;
+   displayWithdrawAmountString.innerText = totallWithdrawAmount;
+
+
+//    update the totall balance:
+
+    // get the totall balance:
+    let totallBalanceDisplay = document.getElementById("totall-balance");
+    let totalBalanceOld = parseFloat(totallBalanceDisplay.innerText);
+    
+    // set the totall balance
+    let totalBalance =  totalBalanceOld - withdrawAmount;
+    totallBalanceDisplay.innerText = totalBalance;
+    
+    // Refresh the field:
+    withdrawAmountStrings.value = "";  
+
+
+
 });
