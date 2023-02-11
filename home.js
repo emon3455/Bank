@@ -6,7 +6,14 @@ document.getElementById("deposit-btn").addEventListener("click",function(){
 
     // step-1.1 conver the user input into number
     let newDepositAmount = parseFloat(depositField.value);
+
+    // clear deposit field:
+    depositField.value = "";
    
+    if(isNaN(newDepositAmount)){
+        alert("Please Enter valid inputs");
+        return;
+    }
     
     // step-2 get the totall amount
     let depositTotallAmount = document.getElementById("display-deposit");
@@ -20,8 +27,7 @@ document.getElementById("deposit-btn").addEventListener("click",function(){
      // set the totall diposit amount:
     depositTotallAmount.innerText = totalDipositAmount;
 
-    // clear deposit field:
-    depositField.value = "";
+    
 
     // step-3
     let totalBalanceOldString = document.getElementById("totall-balance");
@@ -41,31 +47,44 @@ document.getElementById("Withdraw-btn").addEventListener("click", function(){
 
    // taking the withdraw input amount:
    let withdrawAmountStrings = document.getElementById("withdraw-field");
+
    // convert the amount   
    let withdrawAmount = parseFloat(withdrawAmountStrings.value);
+
+   // Refresh the field:
+   withdrawAmountStrings.value = ""; 
+
+    if(isNaN(withdrawAmount)){
+        alert("Please Enter valid inputs");
+        return;
+    }
+    
 
    // taking the withdraw display amount:
    let displayWithdrawAmountString = document.getElementById("display-withdraw");
    // convert the amount 
    let displaywithdrawAmount = parseFloat(displayWithdrawAmountString.innerText);
 
-   // set the display withdraw amount:
-   let totallWithdrawAmount = withdrawAmount + displaywithdrawAmount;
-   displayWithdrawAmountString.innerText = totallWithdrawAmount;
 
-
-//    update the totall balance:
-
-    // get the totall balance:
+    // get the totall display balance:
     let totallBalanceDisplay = document.getElementById("totall-balance");
     let totalBalanceOld = parseFloat(totallBalanceDisplay.innerText);
     
+    if(withdrawAmount> totalBalanceOld){
+        alert("You Don't Have that much money In your account");
+        return;
+   }
+
+    // set the display withdraw amount:
+    let totallWithdrawAmount = withdrawAmount + displaywithdrawAmount;
+    displayWithdrawAmountString.innerText = totallWithdrawAmount;
+
+
     // set the totall balance
     let totalBalance =  totalBalanceOld - withdrawAmount;
     totallBalanceDisplay.innerText = totalBalance;
     
-    // Refresh the field:
-    withdrawAmountStrings.value = "";  
+    
 
 
 
