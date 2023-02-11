@@ -6,7 +6,7 @@ document.getElementById("btn").addEventListener("click" ,function(){
     const passField = document.getElementById("input-pass");
     const pass = passField.value;
 
-    if(email =="emon.mhk69@gmail.com" && pass =="opbro123"){
+    if(email =="user@gmail.com" && pass =="123"){
         window.location.href="home.html";
     }
     else{
